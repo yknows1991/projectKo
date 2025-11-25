@@ -1,11 +1,13 @@
 import sqlite3
-import os
 
 
 class DatabaseManager:
     def __init__(self, db_name="ehub.db"):
         self.db_name = db_name
         self.init_db()
+
+    def connect(self):
+        return sqlite3.connect(self.db_name)
 
     def init_db(self):
         with self.connect() as conn:
