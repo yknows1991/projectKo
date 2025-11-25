@@ -8,8 +8,8 @@ class DatabaseManager:
         self.init_db()
 
     def init_db(self):
-        conn = sqlite3.connect(self.db_name)
-        cursor = conn.cursor()
+        with self.connect() as conn:
+            cursor = conn.cursor()
 
         # PRODUCT TABLE (Holds inventory)
             cursor.execute("""
